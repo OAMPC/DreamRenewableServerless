@@ -1,31 +1,24 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  sam-app
+Description: stripe-app
+
 Globals:
   Function:
     Timeout: 3
+    MemorySize: 128
 
 Resources:
-  HelloWorldFunction:
+  StripePaymentFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: src/
-      Handler: app.lambdaHandler
-      Runtime: nodejs20.x
+      Handler: app.lambda_handler
+      Runtime: python3.9
       Architectures:
         - x86_64
       Events:
-        HelloWorld:
+        StripePaymentApi:
           Type: Api
           Properties:
-            Path: /hello
+            Path: /create-payment-intent
             Method: get
-    Metadata:
-      BuildMethod: esbuild
-      BuildProperties:
-        Minify: true
-        Target: "es2020"
-        Sourcemap: true
-        EntryPoints:
-          - app.ts
