@@ -1,1 +1,7 @@
-{}
+{
+  "body": "{\"amount\": 1750, \"currency\": \"gbp\"}",
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  }
+}

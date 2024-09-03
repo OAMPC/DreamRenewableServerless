@@ -4,7 +4,7 @@ Description: stripe-app
 
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 20
     MemorySize: 128
 
 Resources:
@@ -14,6 +14,8 @@ Resources:
       CodeUri: src/
       Handler: app.lambda_handler
       Runtime: python3.11
+      Architectures:
+        - x86_64
       Environment:
         Variables:
           STRIPE_SECRET_KEY: !Ref StripeSecretKey
